@@ -3,30 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de patrimonios</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .contenedor {
+            width: 80%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 12px auto;
+            width: 70%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .botones {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Lista aleatoria de patrimonios</h1>
+    <div class="contenedor">
+        <h1>Lista aleatoria de patrimonios</h1>
 
-    <ul>
-        {% for item in datos %}
-            <li>
-                Patrimonio: {{ item.patrimonio }} |
-                Ubicación: {{ item.ubicacion }} |
-                Precio: {{ item.precio }} |
-                Filtro estudiante: {{ item.filtro_estudiante }}
-            </li>
-        {% empty %}
-            <li>No hay resultados.</li>
-        {% endfor %}
-    </ul>
-    
-    <a href="{% url 'generar_lista' %}">
-        <button type="button">Reintentar</button>
-    </a>
+        <ul>
+            {% for item in datos %}
+                <li>
+                    <strong>Patrimonio:</strong> {{ item.patrimonio }} <br>
+                    <strong>Ubicación:</strong> {{ item.ubicacion }} <br>
+                    <strong>Precio:</strong> {{ item.precio }} <br>
+                    <strong>Filtro estudiante:</strong> {{ item.filtro_estudiante }}
+                </li>
+            {% empty %}
+                <li>No hay resultados.</li>
+            {% endfor %}
+        </ul>
 
-    <a href="{% url 'home' %}">
-        <button type="button">Volver</button>
-    </a>
+        <div class="botones">
+            <a href="{% url 'generar_lista' %}">
+                <button type="button">Reintentar</button>
+            </a>
 
+            <a href="{% url 'home' %}">
+                <button type="button">Volver</button>
+            </a>
+        </div>
+    </div>
 </body>
 </html>

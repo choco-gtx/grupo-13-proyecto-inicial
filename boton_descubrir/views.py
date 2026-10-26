@@ -9,20 +9,26 @@ def generar_lista(request):
         {
             "patrimonio": 1,
             "ubicacion": "Ubicacion_1",
-            "precio": 250000,
+            "precio": 2100,
             "filtro_estudiante": True
         },
         {
             "patrimonio": 2,
             "ubicacion": "Ubicacion_2",
-            "precio": 340000,
+            "precio": 0,
             "filtro_estudiante": False
         },
         {
             "patrimonio": 3,
             "ubicacion": "Ubicacion_3",
-            "precio": 430000,
+            "precio": 4300,
             "filtro_estudiante": True
+        },
+        {
+            "patrimonio": 4,
+            "ubicacion": "Ubicacion_4",
+            "precio": 2400,
+            "filtro_estudiante": False
         }
     ]
 

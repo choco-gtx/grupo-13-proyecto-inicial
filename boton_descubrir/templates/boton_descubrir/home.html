@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Botón descubrir</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 12px 24px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Generador de patrimonios</h1>
+    <div>
+        <h1>Generador de patrimonios</h1>
 
-    <a href="{% url 'generar_lista' %}">
-        <button type="button">Descubrir</button>
-    </a>
+        <a href="{% url 'generar_lista' %}">
+            <button type="button">Descubrir</button>
+        </a>
+    </div>
 </body>
 </html>

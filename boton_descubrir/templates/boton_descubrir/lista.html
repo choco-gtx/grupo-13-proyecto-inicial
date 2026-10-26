@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de patrimonios</title>
+</head>
+<body>
+    <h1>Lista aleatoria de patrimonios</h1>
+
+    <ul>
+        {% for item in datos %}
+            <li>
+                Patrimonio: {{ item.patrimonio }} |
+                Ubicación: {{ item.ubicacion }} |
+                Precio: {{ item.precio }} |
+                Filtro estudiante: {{ item.filtro_estudiante }}
+            </li>
+        {% empty %}
+            <li>No hay resultados.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}">
+        <button type="button">Volver</button>
+    </a>
+</body>
+</html>

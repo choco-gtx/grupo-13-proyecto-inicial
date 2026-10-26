@@ -7,19 +7,19 @@ def home(request):
 def generar_lista(request):
     patrimonios = [
         {
-            "patrimonio": 150000,
+            "patrimonio": 1,
             "ubicacion": "Ubicacion_1",
             "precio": 250000,
             "filtro_estudiante": True
         },
         {
-            "patrimonio": 220000,
+            "patrimonio": 2,
             "ubicacion": "Ubicacion_2",
             "precio": 340000,
             "filtro_estudiante": False
         },
         {
-            "patrimonio": 310000,
+            "patrimonio": 3,
             "ubicacion": "Ubicacion_3",
             "precio": 430000,
             "filtro_estudiante": True

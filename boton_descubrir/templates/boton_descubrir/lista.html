@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Lista de patrimonios</title>
+
     <style>
         body {
+            background-color: lightblue;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
-
-        .contenedor {
-            width: 80%;
+        .contenedor {  /* Los contenedores con nombre propio deben tener un punto al inicio. */
+            width: 100%;
             text-align: center;
         }
-
-        h1 {
+        h1 { 
             margin-bottom: 25px;
+            font-size: 40px;
         }
-
         ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-
         li {
             background: white;
             border: 1px solid #ccc;
@@ -36,50 +35,64 @@
             padding: 18px 20px;
             margin: 12px auto;
             width: 70%;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
             text-align: left;
         }
-
         .botones {
-            margin-top: 20px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 18px;
         }
-
         button {
-            font-size: 16px;
-            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            font-size: 18px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 14px 28px;
+            border: 2px solid black;
+            border-radius: 10px;
             cursor: pointer;
         }
     </style>
+
 </head>
+
+
 <body>
-    <div class="contenedor">
+
+    <div class="contenedor">  <!-- La división se llama "contenedor"-->
         <h1>Lista aleatoria de patrimonios</h1>
 
-        <ul>
-            {% for item in datos %}
-                <li>
-                    <strong>Patrimonio:</strong> {{ item.patrimonio }} <br>
-                    <strong>Ubicación:</strong> {{ item.ubicacion }} <br>
+        <ul> <!-- u1 = Unordered list = lista sin numeración -->
+            {% for item in datos %}  <!-- "datos" viene de views.py -->
+
+                <li> <!-- li = List item -->
+                    <strong>Patrimonio:</strong> {{ item.patrimonio }} <br>  <!-- Strong: Destacado (negrita)-->
+                    <strong>Ubicación:</strong> {{ item.ubicacion }} <br>  <!-- Br: Salto de línea (break)-->
                     <strong>Precio:</strong> {{ item.precio }} <br>
                     <strong>Filtro estudiante:</strong> {{ item.filtro_estudiante }}
                 </li>
-            {% empty %}
+
+            {% empty %}  <!-- Si datos está vacío -->
                 <li>No hay resultados.</li>
-            {% endfor %}
+
+            {% endfor %} <!-- Terminar el bucle del for-->
+
         </ul>
 
-        <div class="botones">
-            <a href="{% url 'generar_lista' %}">
+        <div class="botones">  
+            <a href="{% url 'generar_lista' %}">  <!-- Vuelve a cargar la página directamente, con nueva lista -->
                 <button type="button">Reintentar</button>
             </a>
 
             <a href="{% url 'home' %}">
                 <button type="button">Volver</button>
             </a>
+
         </div>
+
     </div>
+
 </body>
+
 </html>

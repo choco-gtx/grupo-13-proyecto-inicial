@@ -1,10 +1,10 @@
 import random
-from django.shortcuts import render
+from django.shortcuts import render  # Las páginas HTML que se muestran al usuario
 
-def home(request):
-    return render(request, "boton_descubrir/home.html")
+def home(request):  
+    return render(request, "boton_descubrir/home.html")  # Render indica que debe mostrar la página "home" al usuario
 
-def generar_lista(request):
+def generar_lista(request):  # Función que aleatoriza la lista de patrimonios
     patrimonios = [
         {
             "patrimonio": 1,
@@ -32,6 +32,7 @@ def generar_lista(request):
         }
     ]
 
-    random.shuffle(patrimonios)
+    random.shuffle(patrimonios)  # Aleatoriza
 
     return render(request, "boton_descubrir/lista.html", {"datos": patrimonios})
+    # Se muestra la sección de la lista.html ocupando "datos = patrimonios" en ella

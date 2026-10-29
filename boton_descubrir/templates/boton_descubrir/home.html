@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Botón descubrir</title>
-    <style>
+
+<head>  <!-- Datos no visibles en la página -->
+    <meta charset="UTF-8"> <!-- Permite tildes y las ñ -->
+    <title>Botón descubrir</title> <!-- Título que se ve en la pestaña -->
+
+    <style>  /* Diseño de página */
+    /* Para cambiar el diseño, se elige el elemento y se hace entre llaves {}. */
+    
         body {
+            background-color: lightblue;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
         }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
         button {
-            font-size: 18px;
-            padding: 12px 24px;
+            background-color: blue;
+            color: white;
+            font-size: 24px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 18px 36px;
+            border: 2px solid black;
+            border-radius: 10px;
             cursor: pointer;
         }
-    </style>
-</head>
-<body>
-    <div>
-        <h1>Generador de patrimonios</h1>
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-size: 60px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style> 
 
-        <a href="{% url 'generar_lista' %}">
-            <button type="button">Descubrir</button>
+</head>
+
+
+<body>  <!-- Todo lo que ve el usuario -->
+
+    <div>  <!-- div = contenedor de elementos de la misma sección -->
+        <h1>Generador de patrimonios</h1>  <!-- Titulo en pantalla (h = heading) -->
+
+        <a href = "{% url 'generar_lista' %}">  <!-- Crea un enlace con destino (href) con nombre "generar_lista" -->
+            <button>Descubrir</button>  <!-- Crea un botón visual para el enlace -->
         </a>
+
     </div>
+
 </body>
+
 </html>

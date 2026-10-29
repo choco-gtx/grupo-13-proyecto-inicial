@@ -53,6 +53,51 @@
             border-radius: 10px;
             cursor: pointer;
         }
+        .indicador_estudiante {
+            display: inline-block;
+            background-color: lightgreen;
+            color: green;
+            border: 2px solid green;
+            padding: 8px 12px;
+            margin-top: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .indicador_precio {
+            display: inline-block;
+            background-color: lightblue;
+            color: blue;
+            border: 2px solid blue;
+            padding: 8px 12px;
+            margin-top: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .indicador_comida {
+            display: inline-block;
+            background-color: lightpink;
+            color: darkred;
+            border: 2px solid darkred;
+            padding: 8px 12px;
+            margin-top: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .interruptor {
+            width: 28px;
+            height: 20px;
+            vertical-align: middle;
+            position: relative;
+            top: -2px;
+            gap: 10px;
+        }
+        form {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        label {
+            margin-right: 12px;
+        }
     </style>
 
 </head>
@@ -63,6 +108,29 @@
     <div class="contenedor">  <!-- La división se llama "contenedor"-->
         <h1>Lista aleatoria de patrimonios</h1>
 
+        <form method="get">  <!-- Interruptores de filtro -->
+            <label>
+                <input type="checkbox" class="interruptor" name="estudiantes" value="1"
+                    onchange="this.form.submit()"
+                    {%if estudiantes %} checked {% endif %}>  <!-- Si el filtro está activo, cambia la checkbox-->
+                Para estudiantes
+            </label>
+
+            <label>
+                <input type="checkbox" class="interruptor" name="gratuito" value="1"
+                    onchange="this.form.submit()"
+                    {%if gratuito %} checked {% endif %}>
+                Visita gratuita
+            </label>
+
+            <label>
+                <input type="checkbox" class="interruptor" name="comida" value="1"
+                    onchange="this.form.submit()"
+                    {%if comida %} checked {% endif %}>
+                Comida cerca
+            </label>
+        </form>
+
         <ul> <!-- u1 = Unordered list = lista sin numeración -->
             {% for item in datos %}  <!-- "datos" viene de views.py -->
 
@@ -70,7 +138,18 @@
                     <strong>Patrimonio:</strong> {{ item.patrimonio }} <br>  <!-- Strong: Destacado (negrita)-->
                     <strong>Ubicación:</strong> {{ item.ubicacion }} <br>  <!-- Br: Salto de línea (break)-->
                     <strong>Precio:</strong> {{ item.precio }} <br>
-                    <strong>Filtro estudiante:</strong> {{ item.filtro_estudiante }}
+
+                    {% if item.filtro_estudiante %}  <!-- Si el filtro == true, añade un elemento "span" -->
+                        <span class="indicador_estudiante">Para estudiantes</span>
+                    {% endif %}
+
+                    {% if item.precio == 0 %}
+                        <span class="indicador_precio">Visita gratuita</span>
+                    {% endif %}
+
+                    {% if item.comida_cerca %}
+                        <span class="indicador_comida">Comida cerca</span>
+                    {% endif %}
                 </li>
 
             {% empty %}  <!-- Si datos está vacío -->

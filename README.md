@@ -1,5 +1,10 @@
 # Instalación y ejecución local
-## 1. Clonar el repositorio escribiendo esta línea en una terminal (PowerShell o CMD)
+## 0. (OPCIONAL) Si aún no ha instalado Git, escribir esta línea en terminal CMD
+```bash
+winget install --id Git.Git -e --source winget
+```
+
+## 1. Clonar el repositorio escribiendo esta línea en la terminal CMD
 ```bash
 git clone https://github.com/choco-gtx/grupo-13-proyecto-inicial.git
 ```
@@ -15,11 +20,6 @@ python -m venv .venv
 ```
 
 ## 4. Activar este entorno 
-(Si la terminal es "PowerShell")
-```bash
-.\.venv\Scripts\Activate.ps1
-```
-(Si la terminal es "CMD")
 ```bash
 .venv\Scripts\activate
 ```

@@ -36,13 +36,21 @@ def generar_lista(request):  # Función que aleatoriza la lista de patrimonios
         }
     ]
 
+    # Verificación de si se presionó Descubrir o Reintentar (evitar reinicio lista presionando filtros)
+    nuevo = request.GET.get("nuevo") == "1"
+
+    if nuevo or "patrimonios" not in request.session:  # Se presionó el botón o aún no existe la lista
+        random.shuffle(patrimonios)  # Aleatoriza
+        request.session["patrimonios"] = patrimonios  # patrimonios es la lista aleatorizada
+
+    else:  # Se activó un filtro
+        patrimonios = request.session["patrimonios"]  # patrimonios se mantiene
+
     # Verificación de si el checkbox está activado o no (El checkbox tiene como valor "1", por eso el == "1")
     # Retorna True o False en las variables
     gratuito = request.GET.get("gratuito") == "1" 
     estudiantes = request.GET.get("estudiantes") == "1"
     comida = request.GET.get("comida") == "1"
-
-    random.shuffle(patrimonios)  # Aleatoriza
 
     if gratuito == True:
         patrimonios = [p for p in patrimonios if p["precio"] == 0]  # Forma simplificada de recorrer todos los patrimonios

@@ -26,6 +26,12 @@
             border-radius: 10px;
             cursor: pointer;
         }
+        .link-admin {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
         div {
             display: flex;
             flex-direction: column;
@@ -34,6 +40,9 @@
         h1 {
             font-size: 60px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        a {
+            margin: 10px;
         }
     </style> 
 
@@ -48,8 +57,18 @@
         <a href = "{% url 'generar_lista' %}?nuevo=1">  <!-- Crea un enlace con destino (href) con nombre "generar_lista" -->
             <button>Descubrir</button>  <!-- Crea un botón visual para el enlace -->
         </a>
-
+        
+        <!--
+        <a href = "{% url 'solicitar_patrimonio' %}"> 
+            <button>Solicitar patrimonio</button>  
+        </a>
+        -->
+        
     </div>
+
+    <a href="/admin/" class="link-admin">  <!-- Cuenta administrativa -->
+        Cuenta administrativa
+    </a>
 
 </body>
 

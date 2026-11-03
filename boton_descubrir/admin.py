@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import Patrimonio
 
-# Register your models here.
+admin.site.register(Patrimonio)  #Registramos el modelo Patrimonio en el sitio web de admin

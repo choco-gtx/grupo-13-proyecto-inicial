@@ -98,6 +98,24 @@
         label {
             margin-right: 12px;
         }
+        .lista {
+            max-height: 500px;
+            overflow-y: auto;
+            width: 85%;
+            margin: auto;
+            padding-right: 0px;
+            box-sizing: content-box;
+        }
+        .patrimonios {
+            font-size: 20px;
+        }
+        summary {
+            cursor: pointer;
+            padding: 8px 0;
+            min-height: 20px;
+            list-style: none;
+            font-size: 28px;
+        }
     </style>
 
 </head>
@@ -108,59 +126,73 @@
     <div class="contenedor">  <!-- La división se llama "contenedor"-->
         <h1>Lista aleatoria de patrimonios</h1>
 
-        <form method="get">  <!-- Interruptores de filtro -->
-            <label>
-                <input type="checkbox" class="interruptor" name="estudiantes" value="1"
-                    onchange="this.form.submit()"
-                    {%if estudiantes %} checked {% endif %}>  <!-- Si el filtro está activo, cambia la checkbox-->
-                Para estudiantes
-            </label>
+            <form method="get">  <!-- Interruptores de filtro -->
+                <label>
+                    <input type="checkbox" class="interruptor" name="estudiantes" value="1"
+                        onchange="this.form.submit()"
+                        {%if estudiantes %} checked {% endif %}>  <!-- Si el filtro está activo, cambia la checkbox-->
+                    Para estudiantes
+                </label>
 
-            <label>
-                <input type="checkbox" class="interruptor" name="gratuito" value="1"
-                    onchange="this.form.submit()"
-                    {%if gratuito %} checked {% endif %}>
-                Visita gratuita
-            </label>
+                <label>
+                    <input type="checkbox" class="interruptor" name="gratuito" value="1"
+                        onchange="this.form.submit()"
+                        {%if gratuito %} checked {% endif %}>
+                    Visita gratuita
+                </label>
 
-            <label>
-                <input type="checkbox" class="interruptor" name="comida" value="1"
-                    onchange="this.form.submit()"
-                    {%if comida %} checked {% endif %}>
-                Comida cerca
-            </label>
-        </form>
+                <label>
+                    <input type="checkbox" class="interruptor" name="comida" value="1"
+                        onchange="this.form.submit()"
+                        {%if comida %} checked {% endif %}>
+                    Comida cerca
+                </label>
+            </form>
 
-        <ul> <!-- u1 = Unordered list = lista sin numeración -->
-            {% for item in datos %}  <!-- "datos" viene de views.py -->
+        <div class="lista">
+            <ul> <!-- u1 = Unordered list = lista sin numeración -->
+                {% for item in datos %}  <!-- "datos" viene de views.py -->
 
-                <li> <!-- li = List item -->
-                    <strong>Patrimonio:</strong> {{ item.nombre }} <br>  <!-- Strong: Destacado (negrita)-->
-                    <strong>Ubicación:</strong> {{ item.ubicacion }} <br>  <!-- Br: Salto de línea (break)-->
-                    <strong>Precio:</strong> {{ item.precio }} <br>
+                    <li> <!-- li = List item -->
+                        <details name="patrimonios" class="patrimonios"> <!-- Transforma cada elemento en desplegable -->
 
-                    {% if item.filtro_estudiante %}  <!-- Si el filtro == true, añade un elemento "span" -->
-                        <span class="indicador_estudiante">Para estudiantes</span>
-                    {% endif %}
+                            <summary>
+                                <div class="titulo_patrimonio">
+                                    {{ item.nombre}}  
+                                </div>
+                                
+                                {% if item.filtro_estudiante %}  <!-- Si el filtro == true, añade un elemento "span" -->
+                                    <span class="indicador_estudiante">Para estudiantes</span>
+                                {% endif %}
 
-                    {% if item.precio == 0 %}
-                        <span class="indicador_precio">Visita gratuita</span>
-                    {% endif %}
+                                {% if item.precio == 0 %}
+                                    <span class="indicador_precio">Visita gratuita</span>
+                                {% endif %}
 
-                    {% if item.comida_cerca %}
-                        <span class="indicador_comida">Comida cerca</span>
-                    {% endif %}
-                </li>
+                                {% if item.comida_cerca %}
+                                    <span class="indicador_comida">Comida cerca</span>
+                                {% endif %}
+                            </summary>
+                            
+                            <strong>Descripción:</strong> {{ item.descripcion }} <br>
+                            <strong>Ubicación:</strong> {{ item.ubicacion }} <br>  <!-- Strong: Destacado (negrita)-->
+                            <strong>Precio:</strong> ${{ item.precio }} <br>  <!-- Br: Salto de línea (break)-->
+                            <strong>Horario:</strong> {{ item.horario }} <br>
 
-            {% empty %}  <!-- Si datos está vacío -->
-                <li>No hay resultados.</li>
+                        </details>
+                    </li>
 
-            {% endfor %} <!-- Terminar el bucle del for-->
+                {% empty %}  <!-- Si datos está vacío -->
+                    <li>No hay resultados.</li>
 
-        </ul>
+                {% endfor %} <!-- Terminar el bucle del for-->
+        
+            </ul>
+        </div>
 
-        <div class="botones">  
-            <a href="{% url 'generar_lista' %}?nuevo=1">  <!-- Vuelve a cargar la página directamente, con nueva lista -->
+        <div class="botones"> 
+            <!-- Vuelve a aleatorizar la lista. Todos los if son para mantener los filtros al presionar el botón. --> 
+            <a href="{% url 'generar_lista' %}?nuevo=1{% if estudiantes %}&estudiantes=1{% endif %}{% if gratuito %}&gratuito=1{% endif %}{% if comida %}&comida=1{% endif %}">
                 <button type="button">Reintentar</button>
             </a>
 

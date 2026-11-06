@@ -116,6 +116,32 @@
             list-style: none;
             font-size: 28px;
         }
+        .filtros{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            margin-left: 370px;
+        }
+        .filtros summary {
+            background-color: blue;
+            color: white;
+            font-size: 18px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 14px 28px;
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+            list-style: none;
+            white-space: nowrap;
+        }
+        .filtros form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
     </style>
 
 </head>
@@ -126,7 +152,13 @@
     <div class="contenedor">  <!-- La división se llama "contenedor"-->
         <h1>Lista aleatoria de patrimonios</h1>
 
+        <details class="filtros" {% if mostrar_filtros %}open{% endif %}>  <!-- Filtros se mantienen desplegados al presionar -->
+            <summary>Filtros</summary>
+
             <form method="get">  <!-- Interruptores de filtro -->
+
+                <input type="hidden" name="mostrar_filtros" value="1">  <!-- Se manda la variable como 1 -->
+
                 <label>
                     <input type="checkbox" class="interruptor" name="estudiantes" value="1"
                         onchange="this.form.submit()"
@@ -148,6 +180,9 @@
                     Comida cerca
                 </label>
             </form>
+
+        </details>
+
 
         <div class="lista">
             <ul> <!-- u1 = Unordered list = lista sin numeración -->
@@ -192,7 +227,7 @@
 
         <div class="botones"> 
             <!-- Vuelve a aleatorizar la lista. Todos los if son para mantener los filtros al presionar el botón. --> 
-            <a href="{% url 'generar_lista' %}?nuevo=1{% if estudiantes %}&estudiantes=1{% endif %}{% if gratuito %}&gratuito=1{% endif %}{% if comida %}&comida=1{% endif %}">
+            <a href="{% url 'generar_lista' %}?nuevo=1&mostrar_filtros=1{% if estudiantes %}&estudiantes=1{% endif %}{% if gratuito %}&gratuito=1{% endif %}{% if comida %}&comida=1{% endif %}">
                 <button type="button">Reintentar</button>
             </a>
 

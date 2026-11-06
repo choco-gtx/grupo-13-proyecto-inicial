@@ -9,7 +9,6 @@ def generar_lista(request):  # Función que aleatoriza la lista de patrimonios
     patrimonios = list(Patrimonio.objects.all())  # La lista son todos los objetos del modelo Patrimonio (SQLite)
 
 
-
     # Verificación de si se presionó Descubrir o Reintentar (evitar reinicio lista presionando filtros)
     nuevo = request.GET.get("nuevo") == "1"
 
@@ -29,6 +28,8 @@ def generar_lista(request):  # Función que aleatoriza la lista de patrimonios
     estudiantes = request.GET.get("estudiantes") == "1"
     comida = request.GET.get("comida") == "1"
 
+    mostrar_filtros = request.GET.get("mostrar_filtros") == "1"
+
     if gratuito:
         patrimonios = [p for p in patrimonios if p.precio == 0]  # Forma simplificada de recorrer todos los patrimonios
     if estudiantes:
@@ -36,11 +37,13 @@ def generar_lista(request):  # Función que aleatoriza la lista de patrimonios
     if comida:
         patrimonios = [p for p in patrimonios if p.comida_cerca]
 
+
+    # Se muestra la sección de la lista.html ocupando "datos = patrimonios" en ella
     return render(request, "boton_descubrir/lista.html", {"datos": patrimonios, 
         "gratuito": gratuito,
         "estudiantes": estudiantes,
-        "comida": comida})
-    # Se muestra la sección de la lista.html ocupando "datos = patrimonios" en ella
+        "comida": comida,
+        "mostrar_filtros": mostrar_filtros})
 
 
 def solicitar_patrimonio(request):  

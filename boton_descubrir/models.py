@@ -9,6 +9,8 @@ class Patrimonio(models.Model):  # Creación de clase llamada Patrimonio (models
     filtro_estudiante = models.BooleanField(default=False)  # True o False (por defecto falso)
     comida_cerca = models.BooleanField(default=False)
     horario = models.CharField(max_length=200)
-
+    link_maps = models.URLField(max_length=500, blank=True)
+    imagen = models.URLField(max_length=500, blank=True)
+    
     def __str__(self):  # OPCIONAL, solo para que en /admin cada patrimonio se vea con su nombre y no "Patrimonio object"
         return self.nombre

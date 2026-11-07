@@ -1,153 +1,16 @@
+{% load static %}  <!-- Carga el archivo CSS con el contenido visual-->
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <title>Lista de patrimonios</title>
-
-    <style>
-        body {
-            background-color: lightblue;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-        .contenedor {  /* Los contenedores con nombre propio deben tener un punto al inicio. */
-            width: 100%;
-            text-align: center;
-        }
-        h1 { 
-            margin-bottom: 25px;
-            font-size: 40px;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        li {
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 18px 20px;
-            margin: 12px auto;
-            width: 70%;
-            text-align: left;
-        }
-        .botones {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-        }
-        button {
-            background-color: blue;
-            color: white;
-            font-size: 18px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            padding: 14px 28px;
-            border: 2px solid black;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        .indicador_estudiante {
-            display: inline-block;
-            background-color: lightgreen;
-            color: green;
-            border: 2px solid green;
-            padding: 8px 12px;
-            margin-top: 10px;
-            border-radius: 10px;
-            font-size: 14px;
-        }
-        .indicador_precio {
-            display: inline-block;
-            background-color: lightblue;
-            color: blue;
-            border: 2px solid blue;
-            padding: 8px 12px;
-            margin-top: 10px;
-            border-radius: 10px;
-            font-size: 14px;
-        }
-        .indicador_comida {
-            display: inline-block;
-            background-color: lightpink;
-            color: darkred;
-            border: 2px solid darkred;
-            padding: 8px 12px;
-            margin-top: 10px;
-            border-radius: 10px;
-            font-size: 14px;
-        }
-        .interruptor {
-            width: 28px;
-            height: 20px;
-            vertical-align: middle;
-            position: relative;
-            top: -2px;
-            gap: 10px;
-        }
-        form {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-        label {
-            margin-right: 12px;
-        }
-        .lista {
-            max-height: 500px;
-            overflow-y: auto;
-            width: 85%;
-            margin: auto;
-            padding-right: 0px;
-            box-sizing: content-box;
-        }
-        .patrimonios {
-            font-size: 20px;
-        }
-        summary {
-            cursor: pointer;
-            padding: 8px 0;
-            min-height: 20px;
-            list-style: none;
-            font-size: 28px;
-        }
-        .filtros{
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 15px;
-            margin-left: 370px;
-        }
-        .filtros summary {
-            background-color: blue;
-            color: white;
-            font-size: 18px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            padding: 14px 28px;
-            border: 2px solid black;
-            border-radius: 10px;
-            cursor: pointer;
-            list-style: none;
-            white-space: nowrap;
-        }
-        .filtros form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            margin-top: 30px;
-        }
-    </style>
-
+    <link rel="stylesheet" href="{% static 'boton_descubrir/css/estilos.css' %}">
 </head>
 
 
-<body>
+<body class="pagina-lista">
 
     <div class="contenedor">  <!-- La división se llama "contenedor"-->
         <h1>Lista aleatoria de patrimonios</h1>
@@ -213,6 +76,11 @@
                             <strong>Ubicación:</strong> {{ item.ubicacion }} <br>  <!-- Strong: Destacado (negrita)-->
                             <strong>Precio:</strong> ${{ item.precio }} <br>  <!-- Br: Salto de línea (break)-->
                             <strong>Horario:</strong> {{ item.horario }} <br>
+                            {% if item.imagen %}
+                                <img src="{{ item.imagen }}" alt="Imagen de {{ item.nombre }}" class="imagen_patrimonio">
+                            {% endif %}
+                            
+                            <a href="{{item.link_maps}}" target="_blank" class="link_maps">Ver en Maps</a>  <!-- target: nueva pestaña -->
 
                         </details>
                     </li>

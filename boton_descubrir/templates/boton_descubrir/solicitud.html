@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>  <!-- Datos no visibles en la página -->
+    <meta charset="UTF-8"> <!-- Permite tildes y las ñ -->
+    <title>Solicita patrimonios</title> <!-- Título que se ve en la pestaña -->
+    <link rel="stylesheet" href="{% static 'boton_descubrir/css/estilos.css' %}">
+</head>
+
+
+<body class="pagina-solicitud"> 
+
+    <div class="contenedor-solicitud">  
+        <h1>Solicita patrimonios</h1> 
+
+        <form method="POST">
+            {% csrf_token %}  <!-- Protección de Django -->         
+            {{ formulario.as_p }}  <!-- Muestra los campos del formulario -->
+
+            <button type="submit" class="submit">Enviar solicitud</button>
+            
+            <a href="{% url 'home' %}">
+                <button type="button" class="submit">Volver</button>
+            </a>
+            
+        </form>
+
+    </div>
+
+</body>
+
+</html>

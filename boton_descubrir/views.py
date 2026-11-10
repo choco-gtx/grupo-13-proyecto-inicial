@@ -1,6 +1,7 @@
 import random
-from django.shortcuts import render  # Las páginas HTML que se muestran al usuario
+from django.shortcuts import render, redirect  # Las páginas HTML que se muestran al usuario
 from .models import Patrimonio  # El modelo creado en models.py
+from .forms import SolicitudPatrimonioForm  # El modelo de la solicitud de patrimonio.
 
 def home(request):  
     return render(request, "boton_descubrir/home.html")  # Render indica que debe mostrar la página "home" al usuario
@@ -46,5 +47,17 @@ def generar_lista(request):  # Función que aleatoriza la lista de patrimonios
         "mostrar_filtros": mostrar_filtros})
 
 
-def solicitar_patrimonio(request):  
-    return render(request, "boton_descubrir/solicitar-patrimonio.html")
+def solicitud(request):  
+    formulario = SolicitudPatrimonioForm()  # Crea el formulario vacío
+
+    if request.method == "POST":  # Comprobar si el usuario lo envió
+        formulario = SolicitudPatrimonioForm(request.POST)
+
+        if formulario.is_valid():  # Comprueba la validez de los datos
+            formulario.save()
+
+            return redirect("home")
+        
+    return render(request, "boton_descubrir/solicitud.html", {
+        "formulario": formulario
+    })

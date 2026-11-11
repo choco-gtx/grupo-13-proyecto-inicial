@@ -71,14 +71,24 @@
                                     <span class="indicador_comida">Comida cerca</span>
                                 {% endif %}
                             </summary>
-                            
-                            <strong>Descripción:</strong> {{ item.descripcion }} <br>
+                        
+                    
+                            <div class="contenido_patrimonio">
+
+                                {% if item.imagen %} <!-- Imágen -->
+                                    <img src="{{ item.imagen }}" alt="Imagen de {{ item.nombre }}" class="imagen_patrimonio">
+                                {% endif %}
+
+                                <p class="descripcion_patrimonio">  <!-- Descripción -->
+                                    <strong>Descripción:</strong> {{ item.descripcion }} <br>
+                                </p>
+                                
+                            </div>
+
+
                             <strong>Ubicación:</strong> {{ item.ubicacion }} <br>  <!-- Strong: Destacado (negrita)-->
                             <strong>Precio:</strong> ${{ item.precio }} <br>  <!-- Br: Salto de línea (break)-->
                             <strong>Horario:</strong> {{ item.horario }} <br>
-                            {% if item.imagen %}
-                                <img src="{{ item.imagen }}" alt="Imagen de {{ item.nombre }}" class="imagen_patrimonio">
-                            {% endif %}
                             
                             <a href="{{item.link_maps}}" target="_blank" class="link_maps">Ver en Maps</a>  <!-- target: nueva pestaña -->
 

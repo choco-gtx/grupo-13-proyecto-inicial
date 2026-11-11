@@ -133,7 +133,7 @@
 .pagina-lista .lista {
     max-height: 500px;
     overflow-y: auto;
-    width: 85%;
+    width: 90%;
     margin: auto;
     padding-right: 0px;
     box-sizing: content-box;
@@ -180,17 +180,23 @@
     width: fit-content;
     margin-left: auto;
 }
+.pagina-lista .contenido_patrimonio {
+    position: relative;
+}
 .pagina-lista .imagen_patrimonio {
     width: 300px;
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
-    display: block;
-    margin-left: auto;
-    margin-top: -160px;
-    margin-bottom: 15px;
+    position: absolute;
+    top: -110px;
+    right: 0;
 }
-
+.pagina-lista .descripcion_patrimonio {
+    max-width: calc(100% - 330px);
+    overflow-wrap: break-word;
+    margin-top: 20px;
+}
 
 /* ESTILOS SOLICITUD */
 .pagina-solicitud {

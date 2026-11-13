@@ -19,6 +19,17 @@
             Es obligatorio rellenar el nombre y el link de Google Maps para identificarlo.
         </p>
 
+        {% if messages %}
+            {% for message in messages %}
+
+                <div class="mensaje-exito">
+                    <span class="icono-exito">✓</span>
+                    <span>{{ message }}</span>
+                </div>
+                
+            {% endfor %}
+        {% endif %}
+
         <form method="POST">
             {% csrf_token %}  <!-- Protección de Django -->         
             {{ formulario.as_p }}  <!-- Muestra los campos del formulario -->

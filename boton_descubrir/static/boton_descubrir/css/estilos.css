@@ -345,7 +345,7 @@
     font-size: 21px;
 }
 .pagina-solicitud label[for="id_imagen"]::after {
-    content: "Enlace de imagen:";
+    content: "Dirección de imagen:";
     font-size: 21px;
 }
 
@@ -356,4 +356,25 @@
 .pagina-solicitud form label {
     font-size: 21px;
     margin-right: 2px;
+}
+.pagina-solicitud .mensaje-exito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background-color: lightgreen;
+    color: darkgreen;
+    border: 2px solid green;
+    border-radius: 10px;
+
+    padding: 15px;
+    margin: 1px auto 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.pagina-solicitud .icono-exito {
+    color: green;
+    font-size: 25px;
+    font-weight: bold;
 }

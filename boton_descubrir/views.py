@@ -1,5 +1,6 @@
 import random
 from django.shortcuts import render, redirect  # Las páginas HTML que se muestran al usuario
+from django.contrib import messages
 from .models import Patrimonio  # El modelo creado en models.py
 from .forms import SolicitudPatrimonioForm  # El modelo de la solicitud de patrimonio.
 
@@ -55,8 +56,8 @@ def solicitud(request):
 
         if formulario.is_valid():  # Comprueba la validez de los datos
             formulario.save()
-
-            return redirect("home")
+            messages.success(request, "¡Solicitud enviada correctamente!")
+            return redirect("solicitud")
         
     return render(request, "boton_descubrir/solicitud.html", {
         "formulario": formulario

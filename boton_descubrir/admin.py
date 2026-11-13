@@ -1,8 +1,12 @@
 from django.contrib import admin
 from .models import Patrimonio, SolicitudPatrimonio
 
-admin.site.register(Patrimonio)  #Registramos el modelo Patrimonio en el sitio web de admin
+admin.site.site_header = "HYTEV | Administración"
+admin.site.site_title = "HYTEV"
+admin.site.index_title = "Panel de administración"
 
+
+admin.site.register(Patrimonio)  #Registramos el modelo Patrimonio en el sitio web de admin
 
 # Presionar save guarda la solicitud del usuario como un patrimonio nuevo y borra la solicitud
 class SolicitudPatrimonioAdmin(admin.ModelAdmin):

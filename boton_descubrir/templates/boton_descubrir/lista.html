@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Lista de patrimonios</title>
+    <title>HYTEV - Lista de patrimonios</title>
     <link rel="stylesheet" href="{% static 'boton_descubrir/css/estilos.css' %}">
 </head>
 
@@ -13,108 +13,110 @@
 <body class="pagina-lista">
 
     <div class="contenedor">  <!-- La división se llama "contenedor"-->
-        <h1>Lista aleatoria de patrimonios</h1>
+        <div class="contenido-lista">
+            <h1>Descubre patrimonios de Valparaíso</h1>
 
-        <details class="filtros" {% if mostrar_filtros %}open{% endif %}>  <!-- Filtros se mantienen desplegados al presionar -->
-            <summary>Filtros</summary>
+            <details class="filtros" {% if mostrar_filtros %}open{% endif %}>  <!-- Filtros se mantienen desplegados al presionar -->
+                <summary>Filtros</summary>
 
-            <form method="get">  <!-- Interruptores de filtro -->
+                <form method="get">  <!-- Interruptores de filtro -->
 
-                <input type="hidden" name="mostrar_filtros" value="1">  <!-- Se manda la variable como 1 -->
+                    <input type="hidden" name="mostrar_filtros" value="1">  <!-- Se manda la variable como 1 -->
 
-                <label>
-                    <input type="checkbox" class="interruptor" name="estudiantes" value="1"
-                        onchange="this.form.submit()"
-                        {%if estudiantes %} checked {% endif %}>  <!-- Si el filtro está activo, cambia la checkbox-->
-                    Para estudiantes
-                </label>
+                    <label>
+                        <input type="checkbox" class="interruptor" name="estudiantes" value="1"
+                            onchange="this.form.submit()"
+                            {%if estudiantes %} checked {% endif %}>  <!-- Si el filtro está activo, cambia la checkbox-->
+                        Para estudiantes
+                    </label>
 
-                <label>
-                    <input type="checkbox" class="interruptor" name="gratuito" value="1"
-                        onchange="this.form.submit()"
-                        {%if gratuito %} checked {% endif %}>
-                    Visita gratuita
-                </label>
+                    <label>
+                        <input type="checkbox" class="interruptor" name="gratuito" value="1"
+                            onchange="this.form.submit()"
+                            {%if gratuito %} checked {% endif %}>
+                        Visita gratuita
+                    </label>
 
-                <label>
-                    <input type="checkbox" class="interruptor" name="comida" value="1"
-                        onchange="this.form.submit()"
-                        {%if comida %} checked {% endif %}>
-                    Comida cerca
-                </label>
-            </form>
+                    <label>
+                        <input type="checkbox" class="interruptor" name="comida" value="1"
+                            onchange="this.form.submit()"
+                            {%if comida %} checked {% endif %}>
+                        Comida cerca
+                    </label>
+                </form>
 
-        </details>
-
-
-        <div class="lista">
-            <ul> <!-- u1 = Unordered list = lista sin numeración -->
-                {% for item in datos %}  <!-- "datos" viene de views.py -->
-
-                    <li> <!-- li = List item -->
-                        <details name="patrimonios" class="patrimonios"> <!-- Transforma cada elemento en desplegable -->
-
-                            <summary>
-                                <div class="titulo_patrimonio">
-                                    {{ item.nombre}}  
-                                </div>
-                                
-                                {% if item.filtro_estudiante %}  <!-- Si el filtro == true, añade un elemento "span" -->
-                                    <span class="indicador_estudiante">Para estudiantes</span>
-                                {% endif %}
-
-                                {% if item.precio == 0 %}
-                                    <span class="indicador_precio">Visita gratuita</span>
-                                {% endif %}
-
-                                {% if item.comida_cerca %}
-                                    <span class="indicador_comida">Comida cerca</span>
-                                {% endif %}
-                            </summary>
-                        
-                    
-                            <div class="contenido_patrimonio">
-
-                                {% if item.imagen %} <!-- Imágen -->
-                                    <img src="{{ item.imagen }}" alt="Imagen de {{ item.nombre }}" class="imagen_patrimonio">
-                                {% endif %}
-
-                                <p class="descripcion_patrimonio">  <!-- Descripción -->
-                                    <strong>Descripción:</strong> {{ item.descripcion }} <br>
-                                </p>
-                                
-                            </div>
+            </details>
 
 
-                            <strong>Ubicación:</strong> {{ item.ubicacion }} <br>  <!-- Strong: Destacado (negrita)-->
-                            <strong>Precio:</strong> ${{ item.precio }} <br>  <!-- Br: Salto de línea (break)-->
-                            <strong>Horario:</strong> {{ item.horario }} <br>
+            <div class="lista">
+                <ul> <!-- u1 = Unordered list = lista sin numeración -->
+                    {% for item in datos %}  <!-- "datos" viene de views.py -->
+
+                        <li> <!-- li = List item -->
+                            <details name="patrimonios" class="patrimonios"> <!-- Transforma cada elemento en desplegable -->
+
+                                <summary>
+                                    <div class="titulo_patrimonio">
+                                        {{ item.nombre}}  
+                                    </div>
+                                    
+                                    {% if item.filtro_estudiante %}  <!-- Si el filtro == true, añade un elemento "span" -->
+                                        <span class="indicador_estudiante">Para estudiantes</span>
+                                    {% endif %}
+
+                                    {% if item.precio == 0 %}
+                                        <span class="indicador_precio">Visita gratuita</span>
+                                    {% endif %}
+
+                                    {% if item.comida_cerca %}
+                                        <span class="indicador_comida">Comida cerca</span>
+                                    {% endif %}
+                                </summary>
                             
-                            <a href="{{item.link_maps}}" target="_blank" class="link_maps">Ver en Maps</a>  <!-- target: nueva pestaña -->
+                        
+                                <div class="contenido_patrimonio">
 
-                        </details>
-                    </li>
+                                    {% if item.imagen %} <!-- Imágen -->
+                                        <img src="{{ item.imagen }}" alt="Imagen de {{ item.nombre }}" class="imagen_patrimonio">
+                                    {% endif %}
 
-                {% empty %}  <!-- Si datos está vacío -->
-                    <li>No hay resultados.</li>
+                                    <p class="descripcion_patrimonio">  <!-- Descripción -->
+                                        <strong>Descripción:</strong> {{ item.descripcion }} <br>
+                                    </p>
+                                    
+                                </div>
 
-                {% endfor %} <!-- Terminar el bucle del for-->
+
+                                <strong>Ubicación:</strong> {{ item.ubicacion }} <br>  <!-- Strong: Destacado (negrita)-->
+                                <strong>Precio:</strong> ${{ item.precio }} <br>  <!-- Br: Salto de línea (break)-->
+                                <strong>Horario:</strong> {{ item.horario }} <br>
+                                
+                                <a href="{{item.link_maps}}" target="_blank" class="link_maps">Ver en Maps</a>  <!-- target: nueva pestaña -->
+
+                            </details>
+                        </li>
+
+                    {% empty %}  <!-- Si datos está vacío -->
+                        <li>No hay resultados.</li>
+
+                    {% endfor %} <!-- Terminar el bucle del for-->
+            
+                </ul>
+            </div>
+
+            <div class="botones"> 
+                <!-- Vuelve a aleatorizar la lista. Todos los if son para mantener los filtros al presionar el botón. --> 
+                <a href="{% url 'generar_lista' %}?nuevo=1{% if estudiantes %}&estudiantes=1{% endif %}{% if gratuito %}&gratuito=1{% endif %}{% if comida %}&comida=1{% endif %}">
+                    <button type="button">Reintentar</button>
+                </a>
+
+                <a href="{% url 'home' %}">
+                    <button type="button">Volver</button>
+                </a>
+
+            </div>
         
-            </ul>
         </div>
-
-        <div class="botones"> 
-            <!-- Vuelve a aleatorizar la lista. Todos los if son para mantener los filtros al presionar el botón. --> 
-            <a href="{% url 'generar_lista' %}?nuevo=1&mostrar_filtros=1{% if estudiantes %}&estudiantes=1{% endif %}{% if gratuito %}&gratuito=1{% endif %}{% if comida %}&comida=1{% endif %}">
-                <button type="button">Reintentar</button>
-            </a>
-
-            <a href="{% url 'home' %}">
-                <button type="button">Volver</button>
-            </a>
-
-        </div>
-
     </div>
 
 </body>

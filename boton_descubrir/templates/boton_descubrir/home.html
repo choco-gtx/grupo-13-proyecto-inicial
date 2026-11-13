@@ -5,15 +5,16 @@
 
 <head>  <!-- Datos no visibles en la página -->
     <meta charset="UTF-8"> <!-- Permite tildes y las ñ -->
-    <title>Botón descubrir</title> <!-- Título que se ve en la pestaña -->
+    <title>HYTEV - Home</title> <!-- Título que se ve en la pestaña -->
     <link rel="stylesheet" href="{% static 'boton_descubrir/css/estilos.css' %}"> <!-- Conecta el archivo con el CSS -->
 </head>
 
 
 <body class="pagina-home">  <!-- Todo lo que ve el usuario -->
 
-    <div>  <!-- div = contenedor de elementos de la misma sección -->
-        <h1>Descubre nuevos patrimonios</h1>  <!-- Titulo en pantalla (h = heading) -->
+    <div class="contenedor-home">  <!-- div = contenedor de elementos de la misma sección -->
+        <h1>HYTEV</h1>  <!-- Titulo en pantalla (h = heading) -->
+        <p class="subtitulo-home">HISTORIA Y TURISMO EN VALPARAÍSO</p>
 
         <a href = "{% url 'generar_lista' %}?nuevo=1">  <!-- Crea un enlace con destino (href) con nombre "generar_lista" -->
             <button>Descubrir</button>  <!-- Crea un botón visual para el enlace -->
@@ -23,11 +24,13 @@
             <button>Solicitar patrimonio</button>  
         </a>
         
+        <a href="/admin/" class="link-admin">  <!-- Cuenta administrativa -->
+            Cuenta administrativa
+        </a>
+
     </div>
 
-    <a href="/admin/" class="link-admin">  <!-- Cuenta administrativa -->
-        Cuenta administrativa
-    </a>
+    
 
 </body>
 

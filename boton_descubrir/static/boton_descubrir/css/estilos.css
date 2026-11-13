@@ -1,10 +1,18 @@
 /* ESTILOS DE HOME */
 .pagina-home {
     background-color: lightblue;
+
+    background-image:  
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),  /* Añade un cuadrado negro sobre la imágen */
+        url("https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2024/04/27/istock-1339333929.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 .pagina-home button {
@@ -18,42 +26,83 @@
     cursor: pointer;
 }
 .pagina-home .link-admin {
-    position: absolute;
-    top: 15px;
-    right: 15px;
+    margin-top: 2%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.pagina-home div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-size: 20px;
 }
 .pagina-home h1 {
-    font-size: 60px;
+    font-size: 72px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 3%;
+    margin-top: 1%;
 }
 .pagina-home a {
     margin: 10px;
+}
+.pagina-home .contenedor-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightcyan;
+    width: 60%;
+    padding: 40px;
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 1);
+}
+.pagina-home .subtitulo-home {
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: -25px;
+    margin-bottom: 40px;
 }
 
 
 /* ESTILOS DE LISTA */
 .pagina-lista {
     background-color: lightblue;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        url("https://www.borispatagonia.com/images/valparaiso-chile.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    padding: 35px 0;
+    box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.pagina-lista .contenedor {  /* Los contenedores con nombre propio deben tener un punto al inicio. */
-    width: 100%;
-    text-align: center;
+.pagina-lista .contenedor {
+    width: 85%;
+    margin: -10px auto 0;
+
+    background-color: lightcyan;
+    padding: 30px 40px;
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+}
+.pagina-lista .contenido-lista {
+    width: 1600px;
+    max-width: none;
+    margin: 0 auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .pagina-lista h1 { 
-    margin-bottom: 25px;
-    font-size: 40px;
+    margin-top: 0.3%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 42px;
 }
 .pagina-lista ul {
     list-style: none;
@@ -70,7 +119,7 @@
     text-align: left;
 }
 .pagina-lista .botones {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 18px;
@@ -131,12 +180,20 @@
     margin-right: 12px;
 }
 .pagina-lista .lista {
-    max-height: 500px;
+    max-height: 480px;
     overflow-y: auto;
+    overflow-x: hidden;
     width: 90%;
     margin: auto;
-    padding-right: 0px;
-    box-sizing: content-box;
+    padding-right: 15px;
+    box-sizing: border-box;
+
+    position: relative;
+    left: -100px;
+}
+.pagina-lista .lista ul {
+    position: relative;
+    left: 100px;
 }
 .pagina-lista .patrimonios {
     font-size: 20px;
@@ -201,6 +258,12 @@
 /* ESTILOS SOLICITUD */
 .pagina-solicitud {
     background-color: lightblue;
+
+    background-image: url("https://conocedores.com/wp-content/uploads/2019/02/valparaiso-28022019.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -210,13 +273,25 @@
     box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.pagina-solicitud h1 {
+    font-size: 42px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 1.3%;
+    margin-top: 1%;
+}
+.pagina-solicitud .subtitulo-solicitud {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 42px;
+}
 .pagina-solicitud .contenedor-solicitud {
-    background-color: lightslategrey;
+    background-color: lightcyan;
     width: 85%;
     max-width: 900px;
     padding: 30px 40px;
     border-radius: 15px;
-    box-shadow: 5px 5px 15px black;
+    border: 2px solid black;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
     box-sizing: border-box;
     text-align: center;
 }
@@ -227,26 +302,58 @@
     margin-top: 1%;
 }
 .pagina-solicitud .submit {
-    background-color: green;
+    background-color: blue;
     color: white;
-    font-size: 18px;
+    font-size: 22px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 14px 28px;
     border: 2px solid black;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 4%;
+    margin: 4% 10px 0;
 }
-.pagina-solicitud label[for="id_filtro_estudiante"] {
+.pagina-solicitud label[for="id_nombre"]::before,  /* OBLIGATORIOS */
+.pagina-solicitud label[for="id_link_maps"]::before {
+    content: "(*)";
+    margin-right: 1.1%;
+    color: red;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.pagina-solicitud label[for="id_filtro_estudiante"], /* PARA CAMBIAR EL NOMBRE DE CADA CAMPO */
+.pagina-solicitud label[for="id_link_maps"],
+.pagina-solicitud label[for="id_ubicacion"],
+.pagina-solicitud label[for="id_descripcion"],
+.pagina-solicitud label[for="id_imagen"] {
     font-size: 0;
 }
 .pagina-solicitud label[for="id_filtro_estudiante"]::after {
-    content: "Para estudiantes";
-    font-size: 16px;
+    content: "Para estudiantes:";
+    font-size: 21px;
 }
-.pagina-solicitud label[for="id_nombre"]::after,
 .pagina-solicitud label[for="id_link_maps"]::after {
-    content: " *";
-    color: red;
-    font-weight: bold;
+    content: "Link de Google Maps:";
+    font-size: 21px;
+}
+.pagina-solicitud label[for="id_ubicacion"]::after {
+    content: "Ubicación:";
+    font-size: 21px;
+}
+.pagina-solicitud label[for="id_descripcion"]::after {
+    content: "Descripción";
+    font-size: 21px;
+}
+.pagina-solicitud label[for="id_imagen"]::after {
+    content: "Enlace de imagen:";
+    font-size: 21px;
+}
+
+.pagina-solicitud form p {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.pagina-solicitud form label {
+    font-size: 21px;
+    margin-right: 2px;
 }
